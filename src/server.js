@@ -16,6 +16,10 @@ const PORT = 3000;
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({server}); // 포트를 공유하여, http 서버와 ws 서버를 생성
+wss.on("connection", (socket) => {
+    console.log("connection");
+    console.log(socket);
+});
 
 server.listen(PORT, () => {
     console.log(`listen ${PORT}`);
