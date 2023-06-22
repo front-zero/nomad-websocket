@@ -12,12 +12,29 @@ html
             h1 Noom
         main
             h2(style=h2Style) Welcome to Noom
+            hr
             div
-                form(id="ws-connection")
-                    input(type="text", placeholder="write a nick..")
-                    button Save
-                ul
-                form(id="ws-message")
-                    input(type="text", placeholder="write a message..")
-                    button Send
+                h3(style=h2Style) Room list
+                ul#roomList
+            hr
+            //div
+            //    form(id="ws-connection")
+            //        input(type="text", placeholder="write a nick..")
+            //        button Save
+            h3#roomName
+            h4(style={'letter-spacing': '-0.5px', 'font-weight': 500})#currentNickName nickName: anonymous
+            ul#messageList
+            //    form(id="ws-message")
+            //        input(type="text", placeholder="write a message..")
+            //        button Send
+            form(style={margin: "0 auto"})#roomForm
+                input(placeholder="room name", type="text")
+                button(style = {width: "100%", padding: "8px 16px", margin: "0"}) Enter Room
+            form(style={margin: "0 auto"})#nickForm
+                input(placeholder="write a nick..", type="text")
+                button(style = {width: "100%", padding: "8px 16px", margin: "0"}) Save
+            form(style={margin: "0 auto"})#messageForm
+                input(placeholder="write a message..", type="text")
+                button(style = {width: "100%", padding: "8px 16px", margin: "0"}) Send
+        script(src="/socket.io/socket.io.js")
         script(src="/public/js/app.js")
