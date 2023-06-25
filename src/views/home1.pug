@@ -13,6 +13,11 @@ html
         main
             h2(style=h2Style) Welcome to Noom
             div
-                video#myFace(autoplay, playsinline, width="400", height="400")
-        script(src="/socket.io/socket.io.js")
-        script(src="/public/js/app.js")
+                form(id="ws-connection")
+                    input(type="text", placeholder="write a nick..")
+                    button Save
+                ul
+                form(id="ws-message")
+                    input(type="text", placeholder="write a message..")
+                    button Send
+        script(src="/public/js/app1.js")
