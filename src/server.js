@@ -15,7 +15,6 @@ const io = new Server(httpServer);
 
 io.on('connection', socket => {
    socket.on('joinRoom', (roomName) => {
-       console.log('zzz');
        socket.join(roomName);
        socket.to(roomName).emit('welcome');
    });
