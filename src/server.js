@@ -9,11 +9,27 @@ app.use('/public', express.static(__dirname + '/public'));
 app.get('/', (req, res) => res.render('home'));
 const PORT = 3000;
 
-const server2 = http.createServer(app);
+const httpServer = http.createServer(app);
 
-const io = new Server(server2);
+const io = new Server(httpServer);
 
+io.on('connection', socket => {
+   socket.on('joinRoom', (roomName) => {
+       console.log('zzz');
+       socket.join(roomName);
+       socket.to(roomName).emit('welcome');
+   });
+   socket.on('offer', (offer, roomName) => {
+        socket.to(roomName).emit('offer', offer);
+   });
+    socket.on('answer', (answer, roomName) => {
+        socket.to(roomName).emit('answer', answer);
+    });
+    socket.on('ice', (iceCandidate, roomName) => {
+        socket.to(roomName).emit('ice', iceCandidate);
+    });
+});
 
-server2.listen(PORT, () => {
+httpServer.listen(PORT, () => {
     console.log(`listen ${PORT}`);
 });

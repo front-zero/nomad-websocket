@@ -12,7 +12,17 @@ html
             h1 Noom
         main
             h2(style=h2Style) Welcome to Noom
-            div
-                video#myFace(autoplay, playsinline, width="400", height="400")
+            div#welcome(style={display: 'flex', 'align-items': 'center', 'justify-content': 'center'})
+                form(style={width: '650px', display: 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+                    input(placeholder="room name..", type="text")
+                    button Enter room
+            div#call(style={display: 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+                video#myFace(autoplay, playsinline, width="500", height="500")
+                div
+                    button#mute Mute
+                    button#camera Turn Camera Off
+                select#cameras
+                video#peerStream(autoplay, playsinline, width="500", height="500")
+
         script(src="/socket.io/socket.io.js")
         script(src="/public/js/app.js")
